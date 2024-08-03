@@ -1,7 +1,7 @@
 #!/bin/bash
 function CEKIP () {
 MYIP=$(curl -sS ipv4.icanhazip.com)
-IPVPS=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ipmini | grep $MYIP | awk '{print $4}')
+IPVPS=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $4}')
 if [[ $MYIP == $IPVPS ]]; then
 domain
 Casper2
@@ -89,7 +89,7 @@ USERGIT=$(cat /etc/github/username)
 hhari=$(date -d "1 days" +"%Y-%m-%d")
 mkdir /root/casper
 cd /root/casper
-wget https://raw.githubusercontent.com/RozTun/permission/main/ipmini >/dev/null 2>&1
+wget https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini >/dev/null 2>&1
 echo "### $author $hhari $MYIP @trial" >> ipmini
 sleep 1
 rm -rf .git
@@ -138,7 +138,7 @@ USERGIT=$(cat /etc/github/username)
 hhari=$(date -d "30 days" +"%Y-%m-%d")
 mkdir /root/rmbl
 cd /root/rmbl
-wget https://raw.githubusercontent.com/RozTun/permission/main/ipmini >/dev/null 2>&1
+wget https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini >/dev/null 2>&1
 
 echo "### $author $hhari $MYIP @RMBL" >> ipmini
 
@@ -169,7 +169,7 @@ USERGIT=$(cat /etc/github/username)
 hhari2=$(date -d "999 days" +"%Y-%m-%d")
 mkdir /root/rmbl
 cd /root/rmbl
-wget https://raw.githubusercontent.com/RozTun/permission/main/ipmini >/dev/null 2>&1
+wget https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini >/dev/null 2>&1
 
 sed -i "/# VIP/a ### ${author2} ${hhari2} ${MYIP2} ON 999 VIP" /root/rmbl/ipmini
 
@@ -200,7 +200,7 @@ USERGIT=$(cat /etc/github/username)
 hhari3=$(date -d "999 days" +"%Y-%m-%d")
 mkdir /root/rmbl
 cd /root/rmbl
-wget https://raw.githubusercontent.com/RozTun/permission/main/ipmini >/dev/null 2>&1
+wget https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini >/dev/null 2>&1
 
 sed -i "/# RESELLER/a ### ${author3} ${hhari3} ${MYIP3} ON 999" /root/rmbl/ipmini
 
@@ -230,7 +230,7 @@ USERGIT=$(cat /etc/github/username)
 hhari=$(date -d "$KEY2 days" +"%Y-%m-%d")
 mkdir /root/rmbl
 cd /root/rmbl
-wget https://raw.githubusercontent.com/RozTun/permission/main/ipmini >/dev/null 2>&1
+wget https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini >/dev/null 2>&1
 if [ "$ADMIN" = "ON" ]; then
 sed -i "/# RESELLER/a ### ${author} ${hhari} ${MYIP} ${ADMIN} ${TOTALIP}" /root/rmbl/ipmini
 else
@@ -555,7 +555,8 @@ done
 echo $dns2 >/etc/xray/dns
 fi
 }
-\E[40;1;41m
+cat <<EOF>> /etc/rmbl/theme/red
+BG : \E[40;1;41m
 TEXT : \033[0;31m
 EOF
 cat <<EOF>> /etc/rmbl/theme/green
@@ -565,10 +566,6 @@ EOF
 cat <<EOF>> /etc/rmbl/theme/yellow
 BG : \E[40;1;43m
 TEXT : \033[0;33m
-EOF
-cat <<EOF>> /etc/rmbl/theme/red
-BG : \E[40;1;41m
-TEXT : \033[0;31m
 EOF
 cat <<EOF>> /etc/rmbl/theme/blue
 BG : \E[40;1;44m
@@ -745,8 +742,8 @@ fun_bar 'res9'
 function iinfo(){
 domain=$(cat /etc/xray/domain)
 TIMES="10"
-CHATID="-1002115895858"
-KEY="7011990389:AAGjyKFRt6Tdjm9G3EBgUHf8Ek5p_tMd5p8"
+CHATID="5881666389"
+KEY="7476355367:AAF3aSVZH7CXutCPGUyRA_AOZpuSTMtT0aI"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 ISP=$(cat /etc/xray/isp)
 CITY=$(cat /etc/xray/city)
@@ -755,7 +752,7 @@ TIME=$(date +'%Y-%m-%d %H:%M:%S')
 RAMMS=$(free -m | awk 'NR==2 {print $2}')
 MODEL2=$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')
 MYIP=$(curl -sS ipv4.icanhazip.com)
-IZIN=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ipmini | grep $MYIP | awk '{print $3}' )
+IZIN=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $3}' )
 d1=$(date -d "$IZIN" +%s)
 d2=$(date -d "$today" +%s)
 EXP=$(( (d1 - d2) / 86400 ))
