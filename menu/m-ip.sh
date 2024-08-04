@@ -7,7 +7,7 @@ WH='\033[1;37m'
 ipsaya=$(curl -sS ipinfo.io/ip)
 data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date_list=$(date +"%Y-%m-%d" -d "$data_server")
-data_ip="https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini"
+data_ip="https://raw.githubusercontent.com/RozTun/permission/main/ip"
 checking_sc() {
     useexp=$(curl -sS $data_ip | grep $ipsaya | awk '{print $3}')
     if [[ $date_list < $useexp ]]; then
@@ -30,8 +30,8 @@ checking_sc
 cd
 rm -rf /root/rmbl >/dev/null 
 MYIP=$(curl -sS ipv4.icanhazip.com)
-listuser=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $2}')
-superadmin=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $7}')
+listuser=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $2}')
+superadmin=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $7}')
 uu=$(curl -sS https://pastebin.com/raw/BZ9Fcnqf)
 
 APIGIT=$(cat /etc/github/api)
@@ -41,7 +41,7 @@ author=$(cat /etc/profil)
 
 function tambahip2(){
 author=$(cat /etc/profil)
-superadmin=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $7}')
+superadmin=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $7}')
 if [ "$superadmin" = "VIP" ]; then
 tambahip
 else
@@ -61,30 +61,30 @@ fi
 }
 function gantiip2(){
 author=$(cat /etc/profil)
-superadmin=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $7}')
+superadmin=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $7}')
 if [ "$superadmin" = "VIP" ]; then
 mkdir /root/rmbl
 cd /root/rmbl/ &> /dev/null
 rm -rf .git &> /dev/null
 git init &> /dev/null
-wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ipmini &> /dev/null
+wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ip &> /dev/null
 
-data=( `cat /root/rmbl/ipmini | grep '^###' | cut -d ' ' -f 2 | sort | uniq`);
+data=( `cat /root/rmbl/ip | grep '^###' | cut -d ' ' -f 2 | sort | uniq`);
 now=`date +"%Y-%m-%d"`
 for user in "${data[@]}"
 do
-exp=$(grep -w "^### $user" "ipmini" | cut -d ' ' -f 3 | sort | uniq)
-u4=$(grep -w "^### $user" "ipmini" | cut -d ' ' -f 4 | sort | uniq)
-u5=$(grep -w "^### $user" "ipmini" | cut -d ' ' -f 5 | sort | uniq)
+exp=$(grep -w "^### $user" "ip" | cut -d ' ' -f 3 | sort | uniq)
+u4=$(grep -w "^### $user" "ip" | cut -d ' ' -f 4 | sort | uniq)
+u5=$(grep -w "^### $user" "ip" | cut -d ' ' -f 5 | sort | uniq)
 
 d1=$(date -d "$exp" +%s)
 d2=$(date -d "$now" +%s)
 exp2=$(( (d1 - d2) / 86400 ))
 if [[ "$exp2" -le "0" ]]; then
-sed -i "/### $user $exp $u4 $u5/d" ipmini &> /dev/null
+sed -i "/### $user $exp $u4 $u5/d" ip &> /dev/null
 fi
 done
-git add ipmini &> /dev/null
+git add ip &> /dev/null
 git commit -m remove &> /dev/null
 git branch -M main &> /dev/null
 git remote add origin https://github.com/${USERGIT}/permission.git &> /dev/null
@@ -106,13 +106,13 @@ fi
 }
 function add_ip(){
 clear
-nama2=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $2}')
+nama2=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $2}')
 author=$(cat /etc/profil)
 TIMES="10"
 CHATID=$(cat /etc/per/id)
 KEY=$(cat /etc/per/token)
 URL="https://api.telegram.org/bot$KEY/sendMessage"
-superadmin=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $7}')
+superadmin=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $7}')
 
 echo -e "$RED┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$RED ${NC} ${RED}               ${WH}• REGISTER IPVPS •              ${NC} $RED $NC"
@@ -125,7 +125,7 @@ read -p "   MASUKKAN IPNYA: " daftar
 echo -e "$COLOR1 ${NC}"
 echo -e "$COLOR1 ${NC}  [INFO] Checking the IPVPS!"
 sleep 1
-REQIP=$(curl -sS https://raw.githubusercontent.com/${USERGIT}/permission/main/ipmini | awk '{print $4}' | grep $daftar)
+REQIP=$(curl -sS https://raw.githubusercontent.com/${USERGIT}/permission/main/ip | awk '{print $4}' | grep $daftar)
 if [[ $daftar = $REQIP ]]; then
 echo -e "$COLOR1 ${NC}  [INFO] VPS IP Already Registered!!"
 echo -e "$RED└─────────────────────────────────────────────────┘${NC}"
@@ -204,13 +204,13 @@ case "$list" in
 done
 fi
 MYIP=$(curl -sS ipv4.icanhazip.com)
-U2=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $2}')
-U3=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $3}')
-U4=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $4}')
-U5=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $5}')
-U6=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $6}')
+U2=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $2}')
+U3=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $3}')
+U4=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $4}')
+U5=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $5}')
+U6=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $6}')
 
-#echo "### $client $exp $daftar" >> /etc/register/ipmini
+#echo "### $client $exp $daftar" >> /etc/register/ip
 exp=$(date -d "$hari days" +"%Y-%m-%d")
 hariini=$(date -d "0 days" +"%Y-%m-%d")
 git config --global user.email "${EMAILGIT}" &> /dev/null
@@ -219,16 +219,16 @@ mkdir /root/rmbl
 cd /root/rmbl/ &> /dev/null
 rm -rf .git &> /dev/null
 git init &> /dev/null
-wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ipmini &> /dev/null
+wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ip &> /dev/null
 ws=1
 regip2=$(expr "$U6" - "$ws")
-sed -i "s/### $U2 $U3 $U4 $U5 $U6/### $U2 $U3 $U4 $U5 $regip2/g" ipmini
+sed -i "s/### $U2 $U3 $U4 $U5 $U6/### $U2 $U3 $U4 $U5 $regip2/g" ip
 if [ "$superadmin" = "VIP" ]; then
-echo "### $client $exp $daftar $isadmin $wip @$nama2" >>ipmini
+echo "### $client $exp $daftar $isadmin $wip @$nama2" >>ip
 else
-echo "### $client $exp $daftar @$nama2" >>ipmini 
+echo "### $client $exp $daftar @$nama2" >>ip 
 fi
-git add ipmini
+git add ip
 git commit -m register &> /dev/null
 git branch -M main &> /dev/null
 git remote add origin https://github.com/${USERGIT}/permission &> /dev/null
@@ -282,12 +282,12 @@ author=$(cat /etc/profil)
 IPVPS=$(curl -s ipinfo.io/ip )
 ISP=$(cat /etc/xray/isp)
 CITY=$(cat /etc/xray/city)
-nama2=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $2}')
-Exp2=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $3}')
-job2=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $7}')
-ipmini=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $6}')
-sisaip=$(cat /etc/regip/ipmini | wc -l) 
-totalip=$(expr "$ipmini" - "$sisaip")
+nama2=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $2}')
+Exp2=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $3}')
+job2=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $7}')
+ip=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $6}')
+sisaip=$(cat /etc/regip/ip | wc -l) 
+totalip=$(expr "$ip" - "$sisaip")
 if [ "$job2" = "VIP" ]; then
 job="VIP SUPER ADMIN"
 else
@@ -303,7 +303,7 @@ echo -e "$COLOR1 ${NC}  тАв IP     : $IPVPS"
 echo -e "$COLOR1 ${NC}  тАв ISP    : $ISP & $CITY"
 echo -e "$COLOR1 ${NC}  тАв EXP    : $Exp2"
 echo -e "$COLOR1 ${NC}  тАв ROLE   : $job"
-echo -e "$COLOR1 ${NC}  тАв SISA IP : $ipmini"
+echo -e "$COLOR1 ${NC}  тАв SISA IP : $ip"
 echo -e "$RED└────────────────────────────────┘${NC}"
 echo -e "$RED┌───────────── ${WH}BY${NC} ${RED}───────────────┐${NC}"
 echo -e "$RED ${NC}             ${WH}• $author •${NC}               $RED $NC"
@@ -314,13 +314,13 @@ m-ip
 }
 function genkey(){
 clear
-nama2=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $2}')
+nama2=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $2}')
 author=$(cat /etc/profil)
 TIMES="10"
 CHATID=$(cat /etc/per/id)
 KEY=$(cat /etc/per/token)
 URL="https://api.telegram.org/bot$KEY/sendMessage"
-superadmin=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $7}')
+superadmin=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $7}')
 
 echo -e "$RED┌────────────────────────────────┐${NC}"
 echo -e "$COLOR1 ${NC} ${COLBG1}               ${WH}тАв GENERATE KEY IPVPS тАв           ${NC} $COLOR1 $NC"
@@ -369,11 +369,11 @@ fi
 key=$(openssl rand -hex 5)
 
 MYIP=$(curl -sS ipv4.icanhazip.com)
-U2=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $2}')
-U3=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $3}')
-U4=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $4}')
-U5=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $5}')
-U6=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $6}')
+U2=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $2}')
+U3=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $3}')
+U4=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $4}')
+U5=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $5}')
+U6=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $6}')
 
 exp=$(date -d "$hari days" +"%Y-%m-%d")
 hariini=$(date -d "0 days" +"%Y-%m-%d")
@@ -383,17 +383,17 @@ mkdir /root/rmbl
 cd /root/rmbl/ &> /dev/null
 rm -rf .git &> /dev/null
 git init &> /dev/null
-wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ipmini &> /dev/null
+wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ip &> /dev/null
 ws=1
 regip2=$(expr "$U6" - "$ws")
-sed -i "s/### $U2 $U3 $U4 $U5 $U6/### $U2 $U3 $U4 $U5 $regip2/g" ipmini
-git add ipmini
+sed -i "s/### $U2 $U3 $U4 $U5 $U6/### $U2 $U3 $U4 $U5 $regip2/g" ip
+git add ip
 git commit -m register &> /dev/null
 git branch -M main &> /dev/null
 git remote add origin https://github.com/${USERGIT}/permission &> /dev/null
 git push -f https://${APIGIT}@github.com/${USERGIT}/permission &> /dev/null
 sleep 0.5
-rm ipmini
+rm ip
 wget https://raw.githubusercontent.com/${USERGIT}/license/main/key &> /dev/null
 if [ "$superadmin" = "VIP" ]; then
 x=1
@@ -477,8 +477,8 @@ m-ip
 function delipvps(){
 clear
 MYIP=$(curl -sS ipv4.icanhazip.com)
-listuser=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $2}')
-superadmin=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $7}')
+listuser=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $2}')
+superadmin=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $7}')
 uu=$(curl -sS https://pastebin.com/raw/BZ9Fcnqf)
 
 author=$(cat /etc/profil)
@@ -493,15 +493,15 @@ git config --global user.name "${USERGIT}" &> /dev/null
 mkdir /root/rmbl
 cd /root/rmbl/ &> /dev/null
 rm -rf .git &> /dev/null
-wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ipmini &> /dev/null
+wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ip &> /dev/null
 git init &> /dev/null
-##touch ipmini &> /dev/null
+##touch ip &> /dev/null
 clear
 
-grep -E "$uu$listuser" "ipmini" >>/root/rmbl/client
+grep -E "$uu$listuser" "ip" >>/root/rmbl/client
 
 if [ "$superadmin" = "VIP" ]; then
-NUMBER_OF_CLIENTS=$(grep -c -E "^### " "ipmini")
+NUMBER_OF_CLIENTS=$(grep -c -E "^### " "ip")
 else
 NUMBER_OF_CLIENTS=$(grep -c -E "^###" "client")
 fi
@@ -526,7 +526,7 @@ echo -e "$RED ${NC} ${RED}               ${WH}тАв DELETE IPVPS тАв        
 echo -e "$RED└─────────────────────────────────────────────────┘${NC}"
 echo -e "$RED┌─────────────────────────────────────────────────┐${NC}"
 if [ "$superadmin" = "VIP" ]; then
-grep -E "^### " "ipmini" | cut -d ' ' -f 2-4 | nl -s '. '
+grep -E "^### " "ip" | cut -d ' ' -f 2-4 | nl -s '. '
 else
 grep -E "^###" "client" | cut -d ' ' -f 2-4 | nl -s '. '
 fi
@@ -548,15 +548,15 @@ until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]];
 	fi
 	done
 if [ "$superadmin" = "VIP" ]; then
-name1=$(grep -E "^### " "ipmini" | cut -d ' ' -f 2 | sed -n "$CLIENT_NUMBER"p) #name
-exp=$(grep -E "^### " "ipmini" | cut -d ' ' -f 3 | sed -n "$CLIENT_NUMBER"p) #exp
-ivps1=$(grep -E "^### " "ipmini" | cut -d ' ' -f 4 | sed -n "$CLIENT_NUMBER"p) #ip
+name1=$(grep -E "^### " "ip" | cut -d ' ' -f 2 | sed -n "$CLIENT_NUMBER"p) #name
+exp=$(grep -E "^### " "ip" | cut -d ' ' -f 3 | sed -n "$CLIENT_NUMBER"p) #exp
+ivps1=$(grep -E "^### " "ip" | cut -d ' ' -f 4 | sed -n "$CLIENT_NUMBER"p) #ip
 else
 name1=$(grep -E "^### " "client" | cut -d ' ' -f 2 | sed -n "$CLIENT_NUMBER"p) #name
 exp=$(grep -E "^### " "client" | cut -d ' ' -f 3 | sed -n "$CLIENT_NUMBER"p) #exp
 ivps1=$(grep -E "^### " "client" | cut -d ' ' -f 4 | sed -n "$CLIENT_NUMBER"p) #ip
 fi
-sed -i "/### $name1 $exp $ivps1/d" ipmini &> /dev/null
+sed -i "/### $name1 $exp $ivps1/d" ip &> /dev/null
 hariini2=$(date -d "0 days" +"%Y-%m-%d")
 TEXTD="
 Name     : $name1
@@ -565,7 +565,7 @@ Status   : Deleted on  $hariini2
 " 
 echo "${TEXTD}" >>/root/rmbl/delete_log  &> /dev/null
 
-git add ipmini
+git add ip
 git commit -m remove &> /dev/null
 git branch -M main &> /dev/null
 git remote add origin https://github.com/${USERGIT}/permission.git &> /dev/null
@@ -607,8 +607,8 @@ m-ip
 function tambahip(){
 clear
 MYIP=$(curl -sS ipv4.icanhazip.com)
-listuser=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $2}')
-superadmin=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $7}')
+listuser=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $2}')
+superadmin=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $7}')
 uu=$(curl -sS https://pastebin.com/raw/BZ9Fcnqf)
 
 author=$(cat /etc/profil)
@@ -623,10 +623,10 @@ git config --global user.name "${USERGIT}" &> /dev/null
 mkdir /root/rmbl
 cd /root/rmbl/ &> /dev/null
 rm -rf .git &> /dev/null
-wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ipmini &> /dev/null
+wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ip &> /dev/null
 git init &> /dev/null
 clear
-NUMBER_OF_CLIENTS=$(grep -c -E "ON " "ipmini")
+NUMBER_OF_CLIENTS=$(grep -c -E "ON " "ip")
 if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
   clear
 echo -e "$RED┌─────────────────────────────────────┐${NC}"
@@ -647,7 +647,7 @@ echo -e "$RED┌─────────────────────�
 echo -e "$RED ${NC} ${RED}     ${WH}тАв TAMBAH LIMIT IPVPS тАв              ${NC} $RED $NC"
 echo -e "$RED└─────────────────────────────────────┘${NC}"
 echo -e "$RED┌─────────────────────────────────────┐${NC}"
-grep -E "ON " "ipmini" | cut -d ' ' -f 2-6 | nl -s '. '
+grep -E "ON " "ip" | cut -d ' ' -f 2-6 | nl -s '. '
 echo -e "$RED└─────────────────────────────────────┘${NC}"
 echo -e "$RED┌──────────────── ${WH}BY${NC} ${RED}─────────────────┐${NC}"
 echo -e "$RED ${NC}                ${WH}• $author •${NC}                 $RED $NC"
@@ -666,11 +666,11 @@ until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]];
 	fi
 	done
 
-name1=$(grep -E "^### " "ipmini" | cut -d ' ' -f 2 | sed -n "$CLIENT_NUMBER"p) #name
-exp=$(grep -E "^### " "ipmini" | cut -d ' ' -f 3 | sed -n "$CLIENT_NUMBER"p) #exp
-ivps1=$(grep -E "^### " "ipmini" | cut -d ' ' -f 4 | sed -n "$CLIENT_NUMBER"p) #ip
-admin=$(grep -E "^### " "ipmini" | cut -d ' ' -f 5 | sed -n "$CLIENT_NUMBER"p) #iptambah
-iptambah=$(grep -E "^### " "ipmini" | cut -d ' ' -f 6 | sed -n "$CLIENT_NUMBER"p) #iptambah
+name1=$(grep -E "^### " "ip" | cut -d ' ' -f 2 | sed -n "$CLIENT_NUMBER"p) #name
+exp=$(grep -E "^### " "ip" | cut -d ' ' -f 3 | sed -n "$CLIENT_NUMBER"p) #exp
+ivps1=$(grep -E "^### " "ip" | cut -d ' ' -f 4 | sed -n "$CLIENT_NUMBER"p) #ip
+admin=$(grep -E "^### " "ip" | cut -d ' ' -f 5 | sed -n "$CLIENT_NUMBER"p) #iptambah
+iptambah=$(grep -E "^### " "ip" | cut -d ' ' -f 6 | sed -n "$CLIENT_NUMBER"p) #iptambah
 
 asd=""
 zx="OFF"
@@ -688,10 +688,10 @@ until [[ $ipbaru =~ ^[0-9]+$ ]]; do
 read -rp "   Input Angka Tambahan Limit IPNYA: " ipbaru
 done
 ipbaru2=$(expr "$iptambah" + "$ipbaru")
-sed -i "s/### $name1 $exp $ivps1 $admin $iptambah/### $name1 $exp $ivps1 $admin $ipbaru2/g" ipmini &> /dev/null
+sed -i "s/### $name1 $exp $ivps1 $admin $iptambah/### $name1 $exp $ivps1 $admin $ipbaru2/g" ip &> /dev/null
 hariini2=$(date -d "0 days" +"%Y-%m-%d")
 
-git add ipmini
+git add ip
 git commit -m remove &> /dev/null
 git branch -M main &> /dev/null
 git remote add origin https://github.com/${USERGIT}/permission.git &> /dev/null
@@ -732,8 +732,8 @@ m-ip
 function gantinama(){
 clear
 MYIP=$(curl -sS ipv4.icanhazip.com)
-listuser=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $2}')
-superadmin=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $7}')
+listuser=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $2}')
+superadmin=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $7}')
 uu=$(curl -sS https://pastebin.com/raw/BZ9Fcnqf)
 
 author=$(cat /etc/profil)
@@ -748,14 +748,14 @@ git config --global user.name "${USERGIT}" &> /dev/null
 mkdir /root/rmbl
 cd /root/rmbl/ &> /dev/null
 rm -rf .git &> /dev/null
-wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ipmini &> /dev/null
+wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ip &> /dev/null
 git init &> /dev/null
-#touch ipmini &> /dev/null
+#touch ip &> /dev/null
 clear
-grep -E "$uu$listuser" "ipmini" >>/root/rmbl/client
+grep -E "$uu$listuser" "ip" >>/root/rmbl/client
 
 if [ "$superadmin" = "VIP" ]; then
-NUMBER_OF_CLIENTS=$(grep -c -E "^### " "ipmini")
+NUMBER_OF_CLIENTS=$(grep -c -E "^### " "ip")
 else
 NUMBER_OF_CLIENTS=$(grep -c -E "^###" "client")
 fi
@@ -781,7 +781,7 @@ echo -e "$COLOR1 ${NC} ${COLBG1}               ${WH}тАв GANTI NAMA IPVPS тА
 echo -e "$RED└─────────────────────────────────────────────────┘${NC}"
 echo -e "$RED┌─────────────────────────────────────────────────┐${NC}"
 if [ "$superadmin" = "VIP" ]; then
-grep -E "^### " "ipmini" | cut -d ' ' -f 2-4 | nl -s '. '
+grep -E "^### " "ip" | cut -d ' ' -f 2-4 | nl -s '. '
 else
 grep -E "^###" "client" | cut -d ' ' -f 2-4 | nl -s '. '
 fi
@@ -807,15 +807,15 @@ until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]];
 read -rp "   Please Input New Name : " namabaru
 
 if [ "$superadmin" = "VIP" ]; then
-name1=$(grep -E "^### " "ipmini" | cut -d ' ' -f 2 | sed -n "$CLIENT_NUMBER"p) #name
-exp=$(grep -E "^### " "ipmini" | cut -d ' ' -f 3 | sed -n "$CLIENT_NUMBER"p) #exp
-ivps1=$(grep -E "^### " "ipmini" | cut -d ' ' -f 4 | sed -n "$CLIENT_NUMBER"p) #ip
+name1=$(grep -E "^### " "ip" | cut -d ' ' -f 2 | sed -n "$CLIENT_NUMBER"p) #name
+exp=$(grep -E "^### " "ip" | cut -d ' ' -f 3 | sed -n "$CLIENT_NUMBER"p) #exp
+ivps1=$(grep -E "^### " "ip" | cut -d ' ' -f 4 | sed -n "$CLIENT_NUMBER"p) #ip
 else
 name1=$(grep -E "^### " "client" | cut -d ' ' -f 2 | sed -n "$CLIENT_NUMBER"p) #name
 exp=$(grep -E "^### " "client" | cut -d ' ' -f 3 | sed -n "$CLIENT_NUMBER"p) #exp
 ivps1=$(grep -E "^### " "client" | cut -d ' ' -f 4 | sed -n "$CLIENT_NUMBER"p) #ip
 fi
-sed -i "s/### $name1/### $namabaru/g" ipmini &> /dev/null
+sed -i "s/### $name1/### $namabaru/g" ip &> /dev/null
 hariini2=$(date -d "0 days" +"%Y-%m-%d")
 TEXTD="
 Name old     : $namabaru
@@ -824,7 +824,7 @@ Status        : succes change
 " 
 echo "${TEXTD}" >>/root/rmbl/delete_log  &> /dev/null
 
-git add ipmini
+git add ip
 git commit -m remove &> /dev/null
 git branch -M main &> /dev/null
 git remote add origin https://github.com/${USERGIT}/permission.git &> /dev/null
@@ -867,8 +867,8 @@ m-ip
 function gantiip(){
 clear
 MYIP=$(curl -sS ipv4.icanhazip.com)
-listuser=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $2}')
-superadmin=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $7}')
+listuser=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $2}')
+superadmin=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $7}')
 uu=$(curl -sS https://pastebin.com/raw/BZ9Fcnqf)
 
 author=$(cat /etc/profil)
@@ -883,14 +883,14 @@ git config --global user.name "${USERGIT}" &> /dev/null
 mkdir /root/rmbl >/dev/null
 cd /root/rmbl/ &> /dev/null
 rm -rf .git &> /dev/null
-wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ipmini &> /dev/null
+wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ip &> /dev/null
 git init &> /dev/null
-#touch ipmini &> /dev/null
+#touch ip &> /dev/null
 clear
-grep -E "$uu$listuser" "ipmini" >>/root/rmbl/client
+grep -E "$uu$listuser" "ip" >>/root/rmbl/client
 
 if [ "$superadmin" = "VIP" ]; then
-NUMBER_OF_CLIENTS=$(grep -c -E "^### " "ipmini")
+NUMBER_OF_CLIENTS=$(grep -c -E "^### " "ip")
 else
 NUMBER_OF_CLIENTS=$(grep -c -E "^###" "client")
 fi
@@ -916,7 +916,7 @@ echo -e "$COLOR1 ${NC} ${COLBG1}               ${WH}тАв GANTI USER IPVPS тА
 echo -e "$RED└─────────────────────────────────────────────────┘${NC}"
 echo -e "$RED┌─────────────────────────────────────────────────┐${NC}"
 if [ "$superadmin" = "VIP" ]; then
-grep -E "^### " "ipmini" | cut -d ' ' -f 2-4 | nl -s '. '
+grep -E "^### " "ip" | cut -d ' ' -f 2-4 | nl -s '. '
 else
 grep -E "^###" "client" | cut -d ' ' -f 2-4 | nl -s '. '
 fi
@@ -941,24 +941,24 @@ until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]];
 read -rp "   Please Input New IP : " ipbaru
 
 if [ "$superadmin" = "VIP" ]; then
-name1=$(grep -E "^### " "ipmini" | cut -d ' ' -f 2 | sed -n "$CLIENT_NUMBER"p) #name
-exp=$(grep -E "^### " "ipmini" | cut -d ' ' -f 3 | sed -n "$CLIENT_NUMBER"p) #exp
-ivps1=$(grep -E "^### " "ipmini" | cut -d ' ' -f 4 | sed -n "$CLIENT_NUMBER"p) #ip
+name1=$(grep -E "^### " "ip" | cut -d ' ' -f 2 | sed -n "$CLIENT_NUMBER"p) #name
+exp=$(grep -E "^### " "ip" | cut -d ' ' -f 3 | sed -n "$CLIENT_NUMBER"p) #exp
+ivps1=$(grep -E "^### " "ip" | cut -d ' ' -f 4 | sed -n "$CLIENT_NUMBER"p) #ip
 else
 name1=$(grep -E "^### " "client" | cut -d ' ' -f 2 | sed -n "$CLIENT_NUMBER"p) #name
 exp=$(grep -E "^### " "client" | cut -d ' ' -f 3 | sed -n "$CLIENT_NUMBER"p) #exp
 ivps1=$(grep -E "^### " "client" | cut -d ' ' -f 4 | sed -n "$CLIENT_NUMBER"p) #ip
 fi
-U2=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $2}')
-U3=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $3}')
-U4=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $4}')
-U5=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $5}')
-U6=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $6}')
+U2=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $2}')
+U3=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $3}')
+U4=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $4}')
+U5=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $5}')
+U6=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $6}')
 ws=1
 
 regip2=$(expr "$U6" - "$ws")
-sed -i "s/### $U2 $U3 $U4 $U5 $U6/### $U2 $U3 $U4 $U5 $regip2/g" ipmini
-sed -i "s/### $name1 $exp $ivps1/### $name1 $exp $ipbaru/g" ipmini &> /dev/null
+sed -i "s/### $U2 $U3 $U4 $U5 $U6/### $U2 $U3 $U4 $U5 $regip2/g" ip
+sed -i "s/### $name1 $exp $ivps1/### $name1 $exp $ipbaru/g" ip &> /dev/null
 hariini2=$(date -d "0 days" +"%Y-%m-%d")
 TEXTD="
 IPVPS old     : $ivps1
@@ -967,7 +967,7 @@ Status        : succes change
 " 
 echo "${TEXTD}" >>/root/rmbl/delete_log  &> /dev/null
 
-git add ipmini
+git add ip
 git commit -m remove &> /dev/null
 git branch -M main &> /dev/null
 git remote add origin https://github.com/${USERGIT}/permission.git &> /dev/null
@@ -1010,8 +1010,8 @@ m-ip
 function renewipvps(){
 clear
 MYIP=$(curl -sS ipv4.icanhazip.com)
-listuser=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $2}')
-superadmin=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $7}')
+listuser=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $2}')
+superadmin=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $7}')
 uu=$(curl -sS https://pastebin.com/raw/BZ9Fcnqf)
 
 author=$(cat /etc/profil)
@@ -1026,9 +1026,9 @@ git config --global user.name "${USERGIT}" &> /dev/null
 mkdir /root/rmbl
 cd /root/rmbl
 rm -rf .git &> /dev/null
-wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ipmini &> /dev/null
+wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ip &> /dev/null
 git init &> /dev/null
-#touch ipmini
+#touch ip
 
 clear
 echo -e "$RED┌─────────────────────────────────────────────────┐${NC}"
@@ -1037,7 +1037,7 @@ echo -e "$RED└─────────────────────�
 echo -e "$RED┌─────────────────────────────────────────────────┐${NC}"
 until [[ $iprenew =~ ^[0-9.]+$ ]]; do
 read -p "   MASUKKAN IPNYA: " iprenew
-REQIP=$(curl -sS https://raw.githubusercontent.com/${USERGIT}/permission/main/ipmini | grep $iprenew | awk '{print $4}')
+REQIP=$(curl -sS https://raw.githubusercontent.com/${USERGIT}/permission/main/ip | grep $iprenew | awk '{print $4}')
 if [[ $iprenew = $REQIP ]]; then
 echo -ne
 else
@@ -1073,18 +1073,18 @@ m-ip
 fi
 
 
-name1=$(curl -sS https://raw.githubusercontent.com/${USERGIT}/permission/main/ipmini | grep $iprenew | awk '{print $2}') #name
-exp=$(curl -sS https://raw.githubusercontent.com/${USERGIT}/permission/main/ipmini | grep $iprenew | awk '{print $3}') #exp
-ivps1=$(curl -sS https://raw.githubusercontent.com/${USERGIT}/permission/main/ipmini | grep $iprenew | awk '{print $4}') #ip
-trial=$(curl -sS https://raw.githubusercontent.com/${USERGIT}/permission/main/ipmini | grep $iprenew | awk '{print $5}') #ip 
+name1=$(curl -sS https://raw.githubusercontent.com/${USERGIT}/permission/main/ip | grep $iprenew | awk '{print $2}') #name
+exp=$(curl -sS https://raw.githubusercontent.com/${USERGIT}/permission/main/ip | grep $iprenew | awk '{print $3}') #exp
+ivps1=$(curl -sS https://raw.githubusercontent.com/${USERGIT}/permission/main/ip | grep $iprenew | awk '{print $4}') #ip
+trial=$(curl -sS https://raw.githubusercontent.com/${USERGIT}/permission/main/ip | grep $iprenew | awk '{print $5}') #ip 
 MYIP=$(curl -sS ipv4.icanhazip.com)
-UU2=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $2}')
+UU2=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $2}')
 
-U2=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $2}')
-U3=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $3}')
-U4=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $4}')
-U5=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $5}')
-U6=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $6}')
+U2=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $2}')
+U3=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $3}')
+U4=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $4}')
+U5=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $5}')
+U6=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $6}')
 
 
 now=$(date +%Y-%m-%d)
@@ -1095,11 +1095,11 @@ exp3=$(($exp2 + $masaaktif))
 exp4=$(date -d "$exp3 days" +"%Y-%m-%d")
 ws=1
 regip2=$(expr "$U6" - "$ws")
-sed -i "s/### $U2 $U3 $U4 $U5 $U6/### $U2 $U3 $U4 $U5 $regip2/g" ipmini
+sed -i "s/### $U2 $U3 $U4 $U5 $U6/### $U2 $U3 $U4 $U5 $regip2/g" ip
 
-sed -i "s/### $name1 $exp $ivps1 $trial/### $name1 $exp4 $ivps1 @$UU2/g" ipmini
+sed -i "s/### $name1 $exp $ivps1 $trial/### $name1 $exp4 $ivps1 @$UU2/g" ip
 
-git add ipmini
+git add ip
 git commit -m renew &> /dev/null 
 git branch -M main &> /dev/null
 git remote add origin https://github.com/${USERGIT}/permission.git &> /dev/null
@@ -1146,8 +1146,8 @@ m-ip
 function useripvps(){
 clear
 MYIP=$(curl -sS ipv4.icanhazip.com)
-listuser=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $2}')
-superadmin=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $7}')
+listuser=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $2}')
+superadmin=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $7}')
 uu=$(curl -sS https://pastebin.com/raw/BZ9Fcnqf)
 author=$(cat /etc/profil)
 cd
@@ -1157,17 +1157,17 @@ git config --global user.name "${USERGIT}"
 mkdir /root/rmbl
 cd /root/rmbl/
 rm -rf .git &> /dev/null
-wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ipmini &> /dev/null
+wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ip &> /dev/null
 git init &> /dev/null
 clear
-grep -E "$uu$listuser" "ipmini" >>/root/rmbl/client
-grep -E "@trial" "ipmini" >>/root/rmbl/client
+grep -E "$uu$listuser" "ip" >>/root/rmbl/client
+grep -E "@trial" "ip" >>/root/rmbl/client
 echo -e "$RED┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$RED ${NC} ${RED}               ${WH}• LIST IPVPS •              ${NC} $RED $NC"
 echo -e "$RED└─────────────────────────────────────────────────┘${NC}"
 echo -e "$RED┌─────────────────────────────────────────────────┐${NC}"
 if [ "$superadmin" = "VIP" ]; then
-grep -E "^### " "ipmini" | cut -d ' ' -f 2-4 | nl -s '. '
+grep -E "^### " "ip" | cut -d ' ' -f 2-4 | nl -s '. '
 else
 grep -E "^###" "client" | cut -d ' ' -f 2-4 | nl -s '. '
 fi
@@ -1181,9 +1181,9 @@ echo -e ""
 read -n 1 -s -r -p "   Press any key to back on menu"
 m-ip
 }
-Isadmin=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $5}')
-ipmini=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $6}')
-sisaip=$(cat /etc/regip/ipmini | wc -l) 
+Isadmin=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $5}')
+ip=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $6}')
+sisaip=$(cat /etc/regip/ip | wc -l) 
 ss=0
 if [ "$Isadmin" = "OFF" ]; then
 clear
@@ -1202,8 +1202,8 @@ echo -e ""
 read -n 1 -s -r -p "   Press any key to back on menu"
 menu
 fi
-totalip=$(expr "$ipmini" - "$sisaip")
-if [ $ss -gt $ipmini ]; then
+totalip=$(expr "$ip" - "$sisaip")
+if [ $ss -gt $ip ]; then
 clear
 echo -e "$RED┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$RED ${NC} ${RED}            ${WH}• PREMIUM USER ONLY •              ${NC} $RED $NC"
@@ -1220,7 +1220,7 @@ echo -e ""
 read -n 1 -s -r -p "   Press any key to back on menu"
 menu
 fi
-if [ $ipmini = $ss ]; then
+if [ $ip = $ss ]; then
 clear
 echo -e "$RED┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$RED ${NC} ${COLBG1}            ${WH}• PREMIUM USER ONLY •              ${NC} $COLOR1 $NC"
@@ -1248,7 +1248,7 @@ echo -e "$RED║ [03]$NC • ${WH}DELETE IPVPS   $COLOR1 [07]$NC • ${WH}CHANGE
 echo -e "$RED║ [04]$NC • ${WH}CHANGE NAME    $COLOR1 [08]$NC • ${WH}TAMBAH IP [ADMIN] ${NC}$RED║ $NC"
 echo -e "$RED╚═════════════════════════════════════════════════╝${NC}"
 echo -e "$RED╔═════════════════ ${WH}SISA IP REG${NC} ${RED}═══════════════════╗${NC}"
-echo -e "$RED ${NC}                    ${WH}• $ipmini •${NC}                 $RED $NC"
+echo -e "$RED ${NC}                    ${WH}• $ip •${NC}                 $RED $NC"
 echo -e "$RED╚═════════════════════════════════════════════════╝${NC}"
 echo -e ""
 echo -ne " ${WH}Select menu ${COLOR1}: ${WH}"; read opt
