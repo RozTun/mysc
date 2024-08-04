@@ -1,7 +1,7 @@
 #!/bin/bash
 function CEKIP () {
 MYIP=$(curl -sS ipv4.icanhazip.com)
-IPVPS=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $4}')
+IPVPS=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $4}')
 if [[ $MYIP == $IPVPS ]]; then
 domain
 Casper2
@@ -68,7 +68,9 @@ echo -e "${tyblue}│ \033[1;37mPlease select a your Choice              ${tyblu
 echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
 echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
 echo -e "${tyblue}│  [ 1 ]  \033[1;37mTRIAL 1 HARI      ${NC}"
+echo -e "${tyblue}│  "                                        
 echo -e "${tyblue}│  [ 2 ]  \033[1;37mMEMBER SUDAH BELI     ${NC}"
+echo -e "${tyblue}│     "                                     
 echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
 until [[ $key =~ ^[12]+$ ]]; do 
 read -p "   Please select numbers 1 atau 2 : " key
@@ -77,9 +79,9 @@ if [[ $key == "1" ]]; then
 MYIP=$(curl -sS ipv4.icanhazip.com)
 rm -rf /etc/github
 mkdir /etc/github
-curl -s https://pastebin.com/raw/hG7AJE45 > /etc/github/api
-curl -s https://pastebin.com/raw/9vmwJmpJ > /etc/github/email
-curl -s https://pastebin.com/raw/R0UJuLv0 > /etc/github/username
+curl -s https://pastebin.com/raw/LMJ149AM > /etc/github/api
+curl -s https://pastebin.com/raw/z7kvwiAz > /etc/github/email
+curl -s https://pastebin.com/raw/xGpR4TzF > /etc/github/username
 clear
 APIGIT=$(cat /etc/github/api)
 EMAILGIT=$(cat /etc/github/email)
@@ -87,14 +89,14 @@ USERGIT=$(cat /etc/github/username)
 hhari=$(date -d "1 days" +"%Y-%m-%d")
 mkdir /root/casper
 cd /root/casper
-wget https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini >/dev/null 2>&1
-echo "### $author $hhari $MYIP @trial" >> ipmini
+wget https://raw.githubusercontent.com/RozTun/permission/main/ip >/dev/null 2>&1
+echo "### $author $hhari $MYIP @trial" >> ip
 sleep 1
 rm -rf .git
 git config --global user.email "${EMAILGIT}" >/dev/null 2>&1
 git config --global user.name "${USERGIT}" >/dev/null 2>&1
 git init >/dev/null 2>&1
-git add ipmini 
+git add ip 
 git commit -m register >/dev/null 2>&1
 git branch -M main >/dev/null 2>&1
 git remote add origin https://github.com/${USERGIT}/permission >/dev/null 2>&1
@@ -116,19 +118,19 @@ if [ -z $kode ]; then
 echo -e "KODE SALAH SILAHKAN MASUKKAN ULANG KODENYA"
 key2
 fi
-LIST=$(curl -sS https://raw.githubusercontent.com/hunter-tun/licence/main/key | grep $kode | awk '{print $2}')
-Key=$(curl -sS https://raw.githubusercontent.com/hunter-tun/licence/main/key | grep $kode | awk '{print $3}')
-KEY2=$(curl -sS https://raw.githubusercontent.com/hunter-tun/licence/main/key | grep $kode | awk '{print $4}')
-ADMIN=$(curl -sS https://raw.githubusercontent.com/hunter-tun/licence/main/key | grep $kode | awk '{print $5}')
-TOTALIP=$(curl -sS https://raw.githubusercontent.com/hunter-tun/licence/main/key | grep $kode | awk '{print $6}')
+LIST=$(curl -sS https://raw.githubusercontent.com/RozTun/licence/main/key | grep $kode | awk '{print $2}')
+Key=$(curl -sS https://raw.githubusercontent.com/RozTun/licence/main/key | grep $kode | awk '{print $3}')
+KEY2=$(curl -sS https://raw.githubusercontent.com/RozTun/licence/main/key | grep $kode | awk '{print $4}')
+ADMIN=$(curl -sS https://raw.githubusercontent.com/RozTun/licence/main/key | grep $kode | awk '{print $5}')
+TOTALIP=$(curl -sS https://raw.githubusercontent.com/RozTun/licence/main/key | grep $kode | awk '{print $6}')
 cd
 if [[ $kode == "ROZVIP" ]]; then
 MYIP=$(curl -sS ipv4.icanhazip.com)
 rm -rf /etc/github
 mkdir /etc/github
-curl -s https://pastebin.com/raw/hG7AJE45 > /etc/github/api
-curl -s https://pastebin.com/raw/9vmwJmpJ > /etc/github/email
-curl -s https://pastebin.com/raw/R0UJuLv0 > /etc/github/username
+curl -s https://pastebin.com/raw/LMJ149AM > /etc/github/api
+curl -s https://pastebin.com/raw/z7kvwiAz > /etc/github/email
+curl -s https://pastebin.com/raw/xGpR4TzF > /etc/github/username
 clear
 APIGIT=$(cat /etc/github/api)
 EMAILGIT=$(cat /etc/github/email)
@@ -136,30 +138,30 @@ USERGIT=$(cat /etc/github/username)
 hhari=$(date -d "30 days" +"%Y-%m-%d")
 mkdir /root/rmbl
 cd /root/rmbl
-wget https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini >/dev/null 2>&1
+wget https://raw.githubusercontent.com/RozTun/permission/main/ip >/dev/null 2>&1
 
-echo "### $author $hhari $MYIP @RMBL" >> ipmini
+echo "### $author $hhari $MYIP @HT" >> ip
 
 sleep 0.5
 rm -rf .git
 git config --global user.email "${EMAILGIT}" >/dev/null 2>&1
 git config --global user.name "${USERGIT}" >/dev/null 2>&1
 git init >/dev/null 2>&1
-git add ipmini 
+git add ip 
 git commit -m register >/dev/null 2>&1
 git branch -M main >/dev/null 2>&1
 git remote add origin https://github.com/${USERGIT}/permission >/dev/null 2>&1
 git push -f https://${APIGIT}@github.com/${USERGIT}/permission >/dev/null 2>&1
 sleep 0.5
-rm ipmini
+rm ip
 elif [[ $kode == "ROZVVIP" ]]; then
 MYIP2=$(curl -sS ipv4.icanhazip.com)
 author2=$(cat /etc/profil)
 rm -rf /etc/github
 mkdir /etc/github
-curl -s https://pastebin.com/raw/hG7AJE45 > /etc/github/api
-curl -s https://pastebin.com/raw/9vmwJmpJ > /etc/github/email
-curl -s https://pastebin.com/raw/R0UJuLv0 > /etc/github/username
+curl -s https://pastebin.com/raw/LMJ149AM > /etc/github/api
+curl -s https://pastebin.com/raw/z7kvwiAz > /etc/github/email
+curl -s https://pastebin.com/raw/xGpR4TzF > /etc/github/username
 clear
 APIGIT=$(cat /etc/github/api)
 EMAILGIT=$(cat /etc/github/email)
@@ -167,30 +169,30 @@ USERGIT=$(cat /etc/github/username)
 hhari2=$(date -d "999 days" +"%Y-%m-%d")
 mkdir /root/rmbl
 cd /root/rmbl
-wget https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini >/dev/null 2>&1
+wget https://raw.githubusercontent.com/RozTun/permission/main/ip >/dev/null 2>&1
 
-sed -i "/# VIP/a ### ${author2} ${hhari2} ${MYIP2} ON 999 VIP" /root/rmbl/ipmini
+sed -i "/# VIP/a ### ${author2} ${hhari2} ${MYIP2} ON 999 VIP" /root/rmbl/ip
 
 sleep 0.5
 rm -rf .git
 git config --global user.email "${EMAILGIT}" >/dev/null 2>&1
 git config --global user.name "${USERGIT}" >/dev/null 2>&1
 git init >/dev/null 2>&1
-git add ipmini 
+git add ip 
 git commit -m register >/dev/null 2>&1
 git branch -M main >/dev/null 2>&1
 git remote add origin https://github.com/${USERGIT}/permission >/dev/null 2>&1
 git push -f https://${APIGIT}@github.com/${USERGIT}/permission >/dev/null 2>&1
 sleep 0.5
-rm ipmini
+rm ip
 elif [[ $kode == "ROZADMIN" ]]; then
 MYIP3=$(curl -sS ipv4.icanhazip.com)
 author3=$(cat /etc/profil)
 rm -rf /etc/github
 mkdir /etc/github
-curl -s https://pastebin.com/raw/hG7AJE45 > /etc/github/api
-curl -s https://pastebin.com/raw/9vmwJmpJ > /etc/github/email
-curl -s https://pastebin.com/raw/R0UJuLv0 > /etc/github/username
+curl -s https://pastebin.com/raw/LMJ149AM > /etc/github/api
+curl -s https://pastebin.com/raw/z7kvwiAz > /etc/github/email
+curl -s https://pastebin.com/raw/xGpR4TzF > /etc/github/username
 clear
 APIGIT=$(cat /etc/github/api)
 EMAILGIT=$(cat /etc/github/email)
@@ -198,29 +200,29 @@ USERGIT=$(cat /etc/github/username)
 hhari3=$(date -d "999 days" +"%Y-%m-%d")
 mkdir /root/rmbl
 cd /root/rmbl
-wget https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini >/dev/null 2>&1
+wget https://raw.githubusercontent.com/RozTun/permission/main/ip >/dev/null 2>&1
 
-sed -i "/# RESELLER/a ### ${author3} ${hhari3} ${MYIP3} ON 999" /root/rmbl/ipmini
+sed -i "/# RESELLER/a ### ${author3} ${hhari3} ${MYIP3} ON 999" /root/rmbl/ip
 
 sleep 0.5
 rm -rf .git
 git config --global user.email "${EMAILGIT}" >/dev/null 2>&1
 git config --global user.name "${USERGIT}" >/dev/null 2>&1
 git init >/dev/null 2>&1
-git add ipmini 
+git add ip 
 git commit -m register >/dev/null 2>&1
 git branch -M main >/dev/null 2>&1
 git remote add origin https://github.com/${USERGIT}/permission >/dev/null 2>&1
 git push -f https://${APIGIT}@github.com/${USERGIT}/permission >/dev/null 2>&1
 sleep 0.5
-rm ipmini
+rm ip
 elif [[ $kode == $Key ]]; then
 MYIP=$(curl -sS ipv4.icanhazip.com)
 rm -rf /etc/github
 mkdir /etc/github
-curl -s https://pastebin.com/raw/hG7AJE45 > /etc/github/api
-curl -s https://pastebin.com/raw/9vmwJmpJ > /etc/github/email
-curl -s https://pastebin.com/raw/R0UJuLv0 > /etc/github/username
+curl -s https://pastebin.com/raw/LMJ149AM > /etc/github/api
+curl -s https://pastebin.com/raw/z7kvwiAz > /etc/github/email
+curl -s https://pastebin.com/raw/xGpR4TzF > /etc/github/username
 clear
 APIGIT=$(cat /etc/github/api)
 EMAILGIT=$(cat /etc/github/email)
@@ -228,11 +230,11 @@ USERGIT=$(cat /etc/github/username)
 hhari=$(date -d "$KEY2 days" +"%Y-%m-%d")
 mkdir /root/rmbl
 cd /root/rmbl
-wget https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini >/dev/null 2>&1
+wget https://raw.githubusercontent.com/RozTun/permission/main/ip >/dev/null 2>&1
 if [ "$ADMIN" = "ON" ]; then
-sed -i "/# RESELLER/a ### ${author} ${hhari} ${MYIP} ${ADMIN} ${TOTALIP}" /root/rmbl/ipmini
+sed -i "/# RESELLER/a ### ${author} ${hhari} ${MYIP} ${ADMIN} ${TOTALIP}" /root/rmbl/ip
 else
-echo "### $author $hhari $MYIP @$LIST" >> ipmini
+echo "### $author $hhari $MYIP @$LIST" >> ip
 fi
 
 sleep 0.5
@@ -240,14 +242,14 @@ rm -rf .git
 git config --global user.email "${EMAILGIT}" >/dev/null 2>&1
 git config --global user.name "${USERGIT}" >/dev/null 2>&1
 git init >/dev/null 2>&1
-git add ipmini 
+git add ip 
 git commit -m register >/dev/null 2>&1
 git branch -M main >/dev/null 2>&1
 git remote add origin https://github.com/${USERGIT}/permission >/dev/null 2>&1
 git push -f https://${APIGIT}@github.com/${USERGIT}/permission >/dev/null 2>&1
 sleep 0.5
-rm ipmini
-wget https://raw.githubusercontent.com/hunter-tun/licence/main/key >/dev/null 2>&1
+rm ip
+wget https://raw.githubusercontent.com/RozTun/licence/main/key >/dev/null 2>&1
 if [ "$ADMIN" = "ON" ]; then
 sed -i "/^### $LIST $Key $KEY2 $ADMIN $TOTALIP/d" /root/rmbl/key
 else
@@ -740,8 +742,8 @@ fun_bar 'res9'
 function iinfo(){
 domain=$(cat /etc/xray/domain)
 TIMES="10"
-CHATID="5881666389"
-KEY="7476355367:AAF3aSVZH7CXutCPGUyRA_AOZpuSTMtT0aI"
+CHATID="-1002115895858"
+KEY="7011990389:AAGjyKFRt6Tdjm9G3EBgUHf8Ek5p_tMd5p8"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 ISP=$(cat /etc/xray/isp)
 CITY=$(cat /etc/xray/city)
@@ -750,7 +752,7 @@ TIME=$(date +'%Y-%m-%d %H:%M:%S')
 RAMMS=$(free -m | awk 'NR==2 {print $2}')
 MODEL2=$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')
 MYIP=$(curl -sS ipv4.icanhazip.com)
-IZIN=$(curl -sS https://raw.githubusercontent.com/hunter-tun/permission/main/ipmini | grep $MYIP | awk '{print $3}' )
+IZIN=$(curl -sS https://raw.githubusercontent.com/RozTun/permission/main/ip | grep $MYIP | awk '{print $3}' )
 d1=$(date -d "$IZIN" +%s)
 d2=$(date -d "$today" +%s)
 EXP=$(( (d1 - d2) / 86400 ))
