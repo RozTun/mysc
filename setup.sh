@@ -72,58 +72,6 @@ author=$(cat /etc/profil)
 echo ""
 echo ""
 
-function key2(){
-    clear
-    echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
-    echo -e "${tyblue}│ \033[1;37mPlease select a your Choice              ${tyblue}│${NC}"
-    echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
-    echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
-    echo -e "${tyblue}│  [ 1 ]  \033[1;37mTRIAL 1 HARI      ${NC}"
-    echo -e "${tyblue}│  [ 2 ]  \033[1;37mMEMBER SUDAH BELI     ${NC}"
-    echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
-    
-    until [[ $key =~ ^[12]+$ ]]; do 
-        read -p "   Please select numbers 1 atau 2 : " key
-    done
-    
-    if [[ $key == "1" ]]; then
-        MYIP=$(curl -sS ipv4.icanhazip.com)
-        rm -rf /etc/github
-        mkdir /etc/github
-        curl -s https://pastebin.com/raw/hG7AJE45 > /etc/github/api
-        curl -s https://pastebin.com/raw/9vmwJmpJ > /etc/github/email
-        curl -s https://pastebin.com/raw/R0UJuLv0 > /etc/github/username
-        clear
-        APIGIT=$(cat /etc/github/api)
-        EMAILGIT=$(cat /etc/github/email)
-        USERGIT=$(cat /etc/github/username)
-        hhari=$(date -d "1 days" +"%Y-%m-%d")
-        mkdir /root/casper
-        cd /root/casper
-        wget https://raw.githubusercontent.com/hunter-tun/permission/main/ip >/dev/null 2>&1
-        echo "### $author $hhari $MYIP @trial" >> ip
-        sleep 1
-        rm -rf .git
-        git config --global user.email "${EMAILGIT}" >/dev/null 2>&1
-        git config --global user.name "${USERGIT}" >/dev/null 2>&1
-        git init >/dev/null 2>&1
-        git add ip 
-        git commit -m register >/dev/null 2>&1
-        git branch -M main >/dev/null 2>&1
-        git remote add origin https://github.com/${USERGIT}/permission >/dev/null 2>&1
-        git push -f https://${APIGIT}@github.com/${USERGIT}/permission >/dev/null 2>&1
-        sleep 1
-        rm -rf /root/rmbl
-        rm -rf /etc/github
-        clear
-    elif [[ $key == "2" ]]; then
-        echo -e "MEMBER SUDAH BELI DIPILIH"
-    fi
-}
-
-# Panggilan fungsi CEKIP jika diperlukan
-CEKIP
-}
 function domain(){
 fun_bar() {
     CMD[0]="$1"
